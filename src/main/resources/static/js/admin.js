@@ -48,7 +48,7 @@ function fetchUsers() {
                     <td>${user.name}</td> 
                     <td>${user.age}</td>
                     <td>${user.username}</td>
-                    <td>${user.roles.map(role => role.name.substring(5)).join(', ')}</td> 
+                    <td>${user.authorities.map(role => role.name.substring(5)).join(', ')}</td> 
                     <td><button class="btn btn-info" onclick="openEditUserPopup(${user.id})">Edit</button></td>
                     <td><button class="btn btn-danger" onclick="openDeleteUserPopup(${user.id})">Delete</button></td>
                 `;
@@ -149,7 +149,7 @@ function openEditUserPopup(userId) {
             document.getElementById('editPassword').value = '';
             const editRolesSelect = document.getElementById('editRoles');
             Array.from(editRolesSelect.options).forEach(option => {
-                option.selected = user.roles.some(role => role.id === parseInt(option.value, 10));
+                option.selected = user.authorities.some(role => role.id === parseInt(option.value, 10));
             });
             openModal('editUserModal');
         })
